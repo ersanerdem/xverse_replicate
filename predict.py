@@ -3,7 +3,7 @@ import torch
 from diffusers import StableDiffusionPipeline, StableDiffusionImg2ImgPipeline, EulerAncestralDiscreteScheduler
 from peft import PeftModel
 from PIL import Image
-from typing import List
+from typing import List, Optional
 import os
 import random
 from cog import BasePredictor, Input, Path
@@ -57,9 +57,11 @@ class Predictor(BasePredictor):
         target_height: int = Input(default=512, description="Output image height"),
         target_width: int = Input(default=512, description="Output image width"),
         num_images: int = Input(default=1, ge=1, le=4, description="Number of images to generate"),
-        init_image: Path = Input(default=None, description="Optional input image for img2img"),
+        #init_image: Path = Input(default=None, description="Optional input image for img2img"),
+        init_image: Optional[Path] = Input(default=None, description="Optional input image for img2img"),
         strength: float = Input(default=0.7, description="Strength for img2img (if init_image provided)"),
-        lora_model: Path = Input(default=None, description="Optional LoRA model file (.safetensors)"),
+        lora_model: Optional[Path] = Input(default=None, description="Optional LoRA model file (.safetensors)"),
+        #lora_model: Path = Input(default=None, description="Optional LoRA model file (.safetensors)"),
         lora_weight: float = Input(default=0.8, description="LoRA influence scale (0.0 to 1.0)"),
     ) -> List[Path]:
 
