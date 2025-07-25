@@ -1,14 +1,10 @@
 build:
+  cog_runtime: true
   gpu: true
   python_version: "3.10"
-  python_packages:
-    - torch==2.1.2
-    - torchvision==0.16.2
-    - diffusers==0.27.2
-    - peft==0.10.0
-    - accelerate==0.29.3
-    - Pillow==10.3.0
-    - transformers==4.41.2
-    - safetensors==0.4.3
-    - numpy<2.0 
+  python_requirements: requirements.txt
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "libglib2.0-0"
+ 
 predict: "predict.py:Predictor"
