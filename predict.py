@@ -67,10 +67,15 @@ class Predictor(BasePredictor):
 
         if lora_model and os.path.exists(str(lora_model)):
             self.apply_lora(pipe, str(lora_model), lora_weight)
-
         generator = torch.Generator(self.device)
+        try:
+            seed = int(seed)
+        except Exception:
+            seed = -1
+        
         if seed == -1:
             seed = random.randint(0, 2**32 - 1)
+        
         generator.manual_seed(seed)
 
         kwargs = {
