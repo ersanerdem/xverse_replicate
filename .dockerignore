@@ -1,0 +1,12 @@
+venv
+__pycache__
+.git
+*.pth
+*.ckpt
+*.safetensors
+checkpoints
+.cache
+.ipynb_checkpoints/
+*.pyc
+*.log
+*.pt
